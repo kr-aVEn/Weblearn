@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuttu Repeater</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        color :black;
+            }
+
+    </style>
+</head>
+<body>
+    <h2>Speaker</h2>
+
+    <div class="cont">
+        <label for="text"> Type your Name</label>
+        <input id="text" type="text">
+
+        <button id="speak" > Speak</button>
+
+    </div>
+    <script>
+        function intial(){
+            reply1="Initializing";
+            const speech1 = new SpeechSynthesisUtterance(reply1);
+            speech1.rate = .5;
+            speech1.pitch = 5;
+            speech1.volume = 5;
+             
+            window.speechSynthesis.speak(speech1);
+        }
+        function wishMe() {
+    var day = new Date();
+    var hour = day.getHours();
+   
+    if (hour >= 0 && hour < 12) {
+       reply="Good Morning Boss...";
+    } else if (hour >= 12 && hour < 17) {
+       reply="Good Afternoon Master...";
+    } else {
+        reply="Good Evening Sir...";
+    }
+ 
+    const speech = new SpeechSynthesisUtterance(reply);
+            speech.rate = 1;
+            speech.pitch = -1.5;
+            speech.volume = 5;
+             
+            window.speechSynthesis.speak(speech);
+}
+
+        const btn = document.querySelector('#speak');
+        btn.addEventListener("click", function() {
+            const reply = document.getElementById("text").value;
+            const speech = new SpeechSynthesisUtterance(reply);
+            speech.rate = 1;
+            speech.pitch = -1.5;
+            speech.volume = 5;
+intial(); 
+            wishMe();
+            window.speechSynthesis.speak(speech);
+           
+        }); </script>
+</body>
+</html>
